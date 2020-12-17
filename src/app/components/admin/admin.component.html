@@ -1,0 +1,18 @@
+<div>
+    <table class = "table table-bordered table-inverse">
+        <tr>
+            <th>Owner Name</th>
+            <th>Email</th>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let bike of bikes">
+            <td>
+                <a>{{bike.buyerName}}</a>
+            </td>
+            <td>{{bike.email}}</td>
+            <td>{{bike.model}}</td>
+            <td>{{bike.price}}</td>
+        </tr>
+    </table>
+</div>
