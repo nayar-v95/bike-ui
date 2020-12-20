@@ -1,3 +1,4 @@
+import { ViewComponent } from './components/view/view.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: "login",
     component : LoginComponent
+  },
+  {
+    path: "view/:id",
+    component : ViewComponent
   },
   {
     path:"",

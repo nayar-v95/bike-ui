@@ -14,6 +14,9 @@ export class BikeService {
   getBikes(){
     return this.http.get(this.serviceUrl);
   }
+  getBike(id:any){
+    return this.http.get(this.serviceUrl+'/'+id);
+  }
   createBikeRegistration(bike:any){
     console.log (bike);
     let body = JSON.stringify(bike);
