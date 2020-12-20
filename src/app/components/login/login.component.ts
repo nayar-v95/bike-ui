@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   loginForm! : FormGroup;
+  validateMessage:String = "";
   constructor() { }
 
   ngOnInit(): void {
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
   submitLoginForm(){
     console.log("clicked");
+    this.validateMessage = "Login Failed";
     //send a request for login
   }
 

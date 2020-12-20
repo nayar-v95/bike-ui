@@ -13,5 +13,10 @@
         <button type="Login" class="btn btn-outline-primary"> Submit</button>
     </div>
 </form>
+<div class="alert alert-danger" *ngIf="validateMessage != '' " >
+    <h6>
+        {{validateMessage}}
+    </h6>
+</div>
 
 </div>
