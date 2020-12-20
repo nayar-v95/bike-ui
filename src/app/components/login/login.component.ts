@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loginForm! : FormGroup;
   constructor() { }
 
   ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      username : new FormControl('', Validators.required),
+      password : new FormControl('', Validators.required),
+    });
   }
+  submitLoginForm(){
+    console.log("clicked");
+    //send a request for login
+  }
+
 
 }

@@ -1,14 +1,40 @@
 <h1 class=""> Bike Registry System </h1>
 <nav class="navbar navbar-expand navbar-light bg-light">
     <ul class="nav nav-pills">
-        <li><a class="nav-link" [routerLink]="['/home']">Home</a></li>
-        <li><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
-        <li><a class="nav-link" [routerLink]="['/addBike']">Register Bike</a></li>
+        <li>
+            <a class="nav-link" [routerLink]="['/home']">
+                <div  *ngIf="uri.match('/home');else elseHome" style="background-color: #0045BE; color: aliceblue;" > Home </div>
+                <ng-template #elseHome> Home </ng-template>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" [routerLink]="['/admin']">
+                <div  *ngIf="uri.match('/admin');else elseAdmin" style="background-color: #0045BE; color: aliceblue;" > Admin </div>
+                <ng-template #elseAdmin> Admin </ng-template>    
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" [routerLink]="['/addBike']">
+                <div  *ngIf="uri.match('/addBike');else elseAddBike" style="background-color: #0045BE; color: aliceblue;" > Add Bike </div>
+                <ng-template #elseAddBike> Add Bike </ng-template>
+            </a>
+        </li>
     </ul>
     <div class="text-left mx-auto" > 
         <ul class="nav nav-pills ">        
-            <li><a  class="nav-link" [routerLink]="['/login']">Login</a></li>
-            <li><a  class="nav-link" [routerLink]="['/userRegistration']">Register</a></li>
+            <li>
+                <a  class="nav-link" [routerLink]="['/login']">
+                    <div  *ngIf="uri.match('/login');else elseLogin" style="background-color: #0045BE; color: aliceblue;" > Login </div>
+                    <ng-template #elseLogin> Login </ng-template>
+                </a>
+            </li>
+            <li>
+                <a  class="nav-link" [routerLink]="['/userRegistration']">
+                    <div  *ngIf="uri.match('/userRegistration');else elseRegister" style="background-color: #0045BE; color: aliceblue;" > Register </div>
+                <ng-template #elseRegister> Register </ng-template>
+            
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
