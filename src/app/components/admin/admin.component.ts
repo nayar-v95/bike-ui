@@ -28,7 +28,7 @@ model:any;
     if (this.buyerName == "") {
       this.ngOnInit()
     } else {
-      this.bikes = this.bikes.filter(res  =>{
+      this.bikes = this.bikes.filter((res: { buyerName: string; })  =>{
         return res.buyerName.toLocaleLowerCase().match(this.buyerName.toLocaleLowerCase());
       } )
     }
@@ -38,7 +38,7 @@ model:any;
     if (this.email == "") {
       this.ngOnInit()
     } else {
-      this.bikes = this.bikes.filter(res  =>{
+      this.bikes = this.bikes.filter((res: { email: string; })  =>{
         return res.email.toLocaleLowerCase().match(this.email.toLocaleLowerCase());
       } )
     }
@@ -47,7 +47,7 @@ model:any;
     if (this.model == "") {
       this.ngOnInit()
     } else {
-      this.bikes = this.bikes.filter(res  =>{
+      this.bikes = this.bikes.filter((res: { model: string; })  =>{
         return res.model.toLocaleLowerCase().match(this.model.toLocaleLowerCase());
       } )
     }
