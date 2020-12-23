@@ -33,6 +33,18 @@ export class ViewComponent implements OnInit {
     );
   }
   onBack(){
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/viewAll']);
+  }
+  deleteById(){
+    this.bikeService.deleteById(this.bike.id).subscribe(
+      data => {
+        console.log(data);
+        this.onBack();
+      },
+      error=> {
+        console.error(error);
+      }
+    );
+
   }
 }

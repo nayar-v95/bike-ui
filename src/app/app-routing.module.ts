@@ -1,11 +1,12 @@
 import { ViewComponent } from './components/view/view.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { AddBikeComponent } from './components/add-bike/add-bike.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
+import {  ViewAllComponent } from "./components/view-all/view-all.component";
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from "./components/admin/admin.component";
 
 const routes: Routes = [
   // {
@@ -21,8 +22,8 @@ const routes: Routes = [
     component : AddBikeComponent
   },
   {
-    path: "admin",
-    component : AdminComponent
+    path: "viewAll",
+    component : ViewAllComponent
   },
   {
     path: "userRegistration",
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: "view/:id",
     component : ViewComponent
+  },
+  {
+    path: "admin",
+    component : AdminComponent
   },
   {
     path:"",

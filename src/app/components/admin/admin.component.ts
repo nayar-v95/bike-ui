@@ -1,6 +1,4 @@
-import { BikeService } from './../../services/bike.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-admin',
@@ -8,20 +6,10 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  public bikes:any;
-  constructor(private bikeSevice:BikeService) { }
-  
+
+  constructor() { }
+
   ngOnInit(): void {
-  this.getBikes();
-  }
-  getBikes(){
-    this.bikeSevice.getBikes().subscribe(
-      data => {this.bikes = data},
-      err=> {console.error(err)},
-      ()=>console.log("bikes Loaded")
-    );
-    
-    
   }
 
 }
