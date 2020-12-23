@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ViewComponent } from './components/view/view.component';
 import { ViewAllComponent } from "./components/view-all/view-all.component";
 import { AdminComponent } from './components/admin/admin.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,9 @@ import { AdminComponent } from './components/admin/admin.component';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
