@@ -29,9 +29,6 @@ export class AppComponent {
         .subscribe(event => {
           this.uri = this.route.url;
           this.getUserData();
-          console.log("app component username"+this.username);
-          console.log("app component userType"+this.userType);
-          console.log("app component userstatus"+this.loggedInStatus);
         });
   }
 }

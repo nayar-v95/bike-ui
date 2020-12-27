@@ -16,11 +16,12 @@ export class UserService {
 
   userRegister(registerBody:any){
     let body = JSON.stringify(registerBody);
-    return this.http.post('/server/api/v1/user/register/',body,httpOptions);
+    return this.http.post<boolean>('/server/api/v1/user/register/',body,httpOptions);
   }
   
-  getUserByEmail(){
-
+  getUserByEmail(email:string){
+    console.log("email = "+email);
+    return this.http.get('/server/api/v1/user/email/'+email);
   }
   login(userBody:any){
     let body = JSON.stringify(userBody);

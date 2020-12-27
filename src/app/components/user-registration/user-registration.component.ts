@@ -1,8 +1,12 @@
+import { error } from '@angular/compiler/src/util';
 import { UserService } from './../../services/user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { exit } from 'process';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { isEmpty } from 'rxjs-compat/operator/isEmpty';
 
 @Component({
   selector: 'app-user-registration',
@@ -12,6 +16,7 @@ import { Router } from '@angular/router';
 export class UserRegistrationComponent implements OnInit {
   userForm!:FormGroup;
   validateMessage ="";
+  alreadyExist= true;
   constructor(private userService:UserService,private router :Router) { }
 
   ngOnInit(): void {
@@ -24,17 +29,26 @@ export class UserRegistrationComponent implements OnInit {
     });
   }
   onUserRegistrationSubmit(){
-    console.log("register");
-    if(this.userForm.valid){
+    
+    if(this.userForm.valid ){
+    
       this.userService.userRegister(this.userForm.value).subscribe(
-        data => {console.log(data)},
+        data => {
+          if(data == false){
+            this.alreadyExist = true;
+            this.validateMessage = "Email address already in use";
+       } },
         error =>{console.log(error)}
       );
-      this.userForm.reset();
-      this.router.navigate(['/login']);
-    }else{
-      this.validateMessage = "Please add valid entry"
+      if(!this.alreadyExist)
+      {
+        this.userForm.reset();
+        this.router.navigate(['/login']);
+      }
     }
+    else{
+      this.validateMessage = "Please add valid entry"
+    } 
 
   }
 }
