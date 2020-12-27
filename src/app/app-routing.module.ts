@@ -7,13 +7,10 @@ import { NgModule } from '@angular/core';
 import {  ViewAllComponent } from "./components/view-all/view-all.component";
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from "./components/admin/admin.component";
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
-  // {
-  //   path : "",
-  //   component :HomeComponent
-  // },
-  {
+  { 
     path : "home",
     component :HomeComponent
   },
@@ -32,6 +29,10 @@ const routes: Routes = [
   {
     path: "login",
     component : LoginComponent
+  },
+  {
+    path: "logout",
+    component : LogoutComponent
   },
   {
     path: "view/:id",

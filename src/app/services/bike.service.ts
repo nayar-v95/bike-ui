@@ -11,6 +11,9 @@ const httpOptions  ={
 export class BikeService {
   private serviceUrl= '/server/api/v1/bikes/';
   constructor(private http : HttpClient) { }
+  getBikesByEmail(email:any){
+    return this.http.get(this.serviceUrl+email);
+  }
   getBikes(){
     return this.http.get(this.serviceUrl);
   }

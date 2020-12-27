@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import {  Observable } from "rxjs/Rx";
 import { BikeService } from './../../services/bike.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,8 +14,13 @@ import { error } from '@angular/compiler/src/util';
 export class AddBikeComponent implements OnInit {
   bikeForm! :FormGroup;
   validateMessage :String ="";
+  username:string = "bhatindm";
 
-  constructor(private bikeService:BikeService) { }
+  constructor(private bikeService:BikeService,private userService:UserService) {
+    this.username = this.userService.getUsername();
+    this.username  = this.username.substring(1, this.username.length-1);
+    console.log(this.username);
+   }
 
   ngOnInit(): void {
     this.bikeForm = new FormGroup({

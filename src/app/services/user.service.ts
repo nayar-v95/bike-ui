@@ -1,3 +1,4 @@
+import { logging } from 'protractor';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  Observable } from "rxjs/Rx";
@@ -10,47 +11,38 @@ const httpOptions  ={
 })
 export class UserService {
   private loggedinStatus  =  JSON.parse(localStorage.getItem('loggedin') || 'false'); 
-  private serviceUrl= '/server/api/v1/bikes/user/';
+  private serviceUrl= '/server/api/v1/user/';
   constructor(private http:HttpClient) { }
 
   userRegister(registerBody:any){
     let body = JSON.stringify(registerBody);
-    
-    return this.http.post(this.serviceUrl+'register',body,httpOptions);
+    return this.http.post('/server/api/v1/user/register/',body,httpOptions);
   }
   
   getUserByEmail(){
 
   }
   login(userBody:any){
-    
     let body = JSON.stringify(userBody);
-    console.log(userBody['username']);
-    if (userBody['username'] == 'admin' && userBody['password'] == 'admin') {
-      //set user
-      localStorage.setItem('loggedin' , 'true');
-      localStorage.setItem('user', 'admin');
-      localStorage.setItem('userType', 'admin');
-  }
-  if (userBody['username'] == 'nadeem.bhati@sap.com' && userBody['password'] == 'password') {
-    localStorage.setItem('loggedin' , 'true');
-    localStorage.setItem('user', userBody['username']);
-    localStorage.setItem('userType', 'normal');
-    
-  }
-   return this.http.get('/server/api/v1/bikes');  
-//  return this.http.post('/server/api/v1/bikes',body,httpOptions);
-  
+    return this.http.post<Boolean>('/server/api/v1/user/login',body,httpOptions); 
   }
   logout(){
-
+    localStorage.removeItem('loggedin');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userType');
+    return true;
+  }
+  setUserData(loggedin:string,username:string,userType:string){
+    localStorage.setItem('loggedin',loggedin);
+    localStorage.setItem('username',username);
+   localStorage.setItem('userType',userType); 
   }
   getUsername() {
-    return JSON.parse(localStorage.getItem('username') || '{}');
+    return JSON.stringify(localStorage.getItem('username') || '{}');
   }
   getUserType(){
     
-    return JSON.parse(localStorage.getItem('userType') || '{}');
+    return JSON.stringify(localStorage.getItem('userType') || '{}');
   }
   getLoginStatus(){
     return JSON.parse(localStorage.getItem('loggedin') || 'false');

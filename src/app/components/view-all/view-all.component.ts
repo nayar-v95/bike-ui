@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { BikeService } from './../../services/bike.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
@@ -9,19 +10,19 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ViewAllComponent implements OnInit {
   public bikes:any;
-  constructor(private bikeSevice:BikeService) { }
+  public email!:String;
+  constructor(private bikeSevice:BikeService,private userService:UserService) { }
   
   ngOnInit(): void {
-  this.getBikes();
+    this.email = this.userService.getUsername();
+  this.getBikesByEmail();
   }
-  getBikes(){
-    this.bikeSevice.getBikes().subscribe(
+  getBikesByEmail(){
+    this.bikeSevice.getBikesByEmail(this.email).subscribe(
       data => {this.bikes = data},
       err=> {console.error(err)},
       ()=>console.log("bikes Loaded")
-    );
-    
-    
+    ); 
   }
 
 }
