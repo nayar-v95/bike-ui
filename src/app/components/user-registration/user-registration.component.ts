@@ -16,8 +16,11 @@ import { isEmpty } from 'rxjs-compat/operator/isEmpty';
 export class UserRegistrationComponent implements OnInit {
   userForm!:FormGroup;
   validateMessage ="";
-  alreadyExist= true;
-  constructor(private userService:UserService,private router :Router) { }
+  successMessage ="";
+  alreadyExist= false;
+  constructor(private userService:UserService,private router :Router) {
+    this.alreadyExist = false;
+   }
 
   ngOnInit(): void {
     this.userForm = new FormGroup( {
@@ -35,16 +38,14 @@ export class UserRegistrationComponent implements OnInit {
       this.userService.userRegister(this.userForm.value).subscribe(
         data => {
           if(data == false){
-            this.alreadyExist = true;
             this.validateMessage = "Email address already in use";
-       } },
+       } 
+      else {
+        this.successMessage = "You are now registered."
+      }},
         error =>{console.log(error)}
       );
-      if(!this.alreadyExist)
-      {
         this.userForm.reset();
-        this.router.navigate(['/login']);
-      }
     }
     else{
       this.validateMessage = "Please add valid entry"
