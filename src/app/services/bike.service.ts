@@ -9,7 +9,7 @@ const httpOptions  ={
   providedIn: 'root'
 })
 export class BikeService {
-  private serviceUrl= '/server/api/v1/bikes/';
+  private serviceUrl= 'http://localhost:8080/api/v1/bikes/';
   constructor(private http : HttpClient) { }
   getBikesByEmail(email:any){
     return this.http.get(this.serviceUrl+email);

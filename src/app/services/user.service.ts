@@ -11,21 +11,21 @@ const httpOptions  ={
 })
 export class UserService {
   private loggedinStatus  =  JSON.parse(localStorage.getItem('loggedin') || 'false'); 
-  private serviceUrl= '/server/api/v1/user/';
+  private serviceUrl= 'http://localhost:8080/api/v1/user';
   constructor(private http:HttpClient) { }
 
   userRegister(registerBody:any){
     let body = JSON.stringify(registerBody);
-    return this.http.post<boolean>('/server/api/v1/user/register/',body,httpOptions);
+    return this.http.post<boolean>(this.serviceUrl+'/register/',body,httpOptions);
   }
   
   getUserByEmail(email:string){
     console.log("email = "+email);
-    return this.http.get('/server/api/v1/user/email/'+email);
+    return this.http.get(this.serviceUrl+'/email/'+email);
   }
   login(userBody:any){
     let body = JSON.stringify(userBody);
-    return this.http.post<Boolean>('/server/api/v1/user/login',body,httpOptions); 
+    return this.http.post<Boolean>(this.serviceUrl+'/login',body,httpOptions); 
   }
   logout(){
     localStorage.removeItem('loggedin');
