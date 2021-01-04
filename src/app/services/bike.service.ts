@@ -12,7 +12,7 @@ export class BikeService {
   private serviceUrl= 'http://localhost:8080/api/v1/bikes/';
   constructor(private http : HttpClient) { }
   getBikesByEmail(email:any){
-    return this.http.get(this.serviceUrl+email);
+    return this.http.get(this.serviceUrl+'email/'+email);
   }
   getBikes(){
     return this.http.get(this.serviceUrl);
