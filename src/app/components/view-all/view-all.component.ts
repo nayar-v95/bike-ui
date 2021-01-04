@@ -15,6 +15,7 @@ export class ViewAllComponent implements OnInit {
   
   ngOnInit(): void {
     this.email = this.userService.getUsername();
+    this.email =this.email.substring(1, this.email.length-1)
   this.getBikesByEmail();
   }
   getBikesByEmail(){
